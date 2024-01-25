@@ -13,6 +13,13 @@ fn main() {
     // Check if its a link
     if re_file_or_url.is_match(&arg) {
         // Open via web browser
+        Command::new("cmd.exe")
+            .arg("/c")
+            .arg("start")
+            .arg(&arg)
+            .output()
+            .unwrap();
+        return;
     }
 
     let winfn = convert_filename_to_windows(&arg);
